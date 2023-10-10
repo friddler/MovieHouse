@@ -1,0 +1,51 @@
+ @import url('https://fonts.googleapis.com/css2?family=Limelight&family=Poppins:wght@400;500&display=swap');
+
+/* HOME */
+
+.home {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* VIDEO CONTAINER */
+
+
+
+
+/* WELCOME CONTAINER */
+
+.welcome-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column; 
+    margin-bottom: 25%;
+}
+
+.welcome-container h2{
+    font-size: 30px;
+    margin: 0px;
+    margin-bottom: 5px;
+    margin-right: 60px;       
+}
+
+.welcome-container h1{
+    font-size: 100px;
+    margin: 0;
+    font-family: 'Limelight', cursive;
+    
+}
+
+.welcome-container p {
+    font-size: 25px;
+    margin: 0;
+    margin-right: 20px; 
+    
+}
