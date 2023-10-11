@@ -9,13 +9,11 @@ function App() {
   const [cart, setCart] = useState(["Avatar the blue","aviator"]);
 
 function remove (item) {
-  let copyCart = cart;
-  let index = copyCart.indexOf(item);
-  let removedItem = copyCart.splice(index,1);
-  console.log(removedItem);
-  setCart(copyCart);
+  setCart(cart.filter(i => i != item));
 }
-
+function add(item){
+  setCart([...cart,item]);
+}
 
 
 
@@ -25,7 +23,7 @@ function remove (item) {
         <Navbar cart={cart}/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="cart" element={<ShopCart cart={cart} remove={remove}/>}/>
+          <Route path="cart" element={<ShopCart cart={cart} add={add} remove={remove}/>}/>
         </Routes>
       </Router>
     </div>

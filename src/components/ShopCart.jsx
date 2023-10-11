@@ -11,9 +11,10 @@ const ShopCart = (props) => {
     return (
 
         <ul>
+            <button onClick={()=> props.add("Hej")}>Add</button>
             {
          props.cart.map((item) => (
-        <li className='listItem'>
+        <li className='listItem' key={item}>
         <img src={imgMovie} alt="" />
         <h2>{item}</h2> 
         <label>Art.nr:</label><br />
