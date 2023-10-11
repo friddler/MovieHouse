@@ -12,31 +12,36 @@ import SearchIcon from "@mui/icons-material/Search";
 */
 
 function Navbar() {
-  
-
   const toggleSearchBar = () => {
-     // funktion för att toggla sökfunktion
+    // funktion för att toggla sökfunktion
   };
 
   return (
     <div className="navbar">
-    <div className="nav-left">{/* Logo */}</div>
+      <div className="nav-left">{/* Logo */}</div>
 
-    <div className="nav-right">
-      <Link to="/" className="nav-link">HOME</Link>
-      <Link to="/browse" className="nav-link">BROWSE</Link>
-      <Link to="/contact" className="nav-link">CONTACT</Link>
-    </div>
+      <div className="nav-right">
+        <Link to="/" className="nav-link">
+          HOME
+        </Link>
+        <Link to="/movies" className="nav-link">
+          MOVIES
+        </Link>
+        <Link to="/series" className="nav-link">
+          SERIES
+        </Link>
 
-    <div className="nav-icons">
-      <div className="search-icon" onClick={toggleSearchBar}>
-        <SearchIcon />
+        <div className="nav-icons">
+          <div className="search-bar">
+            <input type="text" name="search" placeholder="Search.." />
+            <SearchIcon className="input-search-icon" />
+          </div>
+          <Link to="/cart" className="cart-icon">
+            <ShoppingCartIcon />
+          </Link>
+        </div>
       </div>
-      <Link to="/cart" className="cart-icon">
-        <ShoppingCartIcon />
-      </Link>
     </div>
-  </div>
   );
 }
 export default Navbar;
