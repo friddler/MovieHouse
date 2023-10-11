@@ -11,7 +11,7 @@ import SearchIcon from "@mui/icons-material/Search";
 5.Cart icon
 */
 
-function Navbar() {
+function Navbar(props) {
   
 
   const toggleSearchBar = () => {
@@ -33,7 +33,7 @@ function Navbar() {
         <SearchIcon />
       </div>
       <Link to="/cart" className="cart-icon">
-        <ShoppingCartIcon />
+      <ShoppingCartIcon/> {props.cart.length}
       </Link>
     </div>
   </div>
