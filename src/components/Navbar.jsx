@@ -12,9 +12,6 @@ import SearchIcon from "@mui/icons-material/Search";
 */
 
 function Navbar() {
-  const toggleSearchBar = () => {
-    // funktion för att toggla sökfunktion
-  };
 
   return (
     <div className="navbar">

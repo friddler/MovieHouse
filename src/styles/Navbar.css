@@ -35,6 +35,11 @@
   .nav-icons {
     display: flex;
     align-items: center;
+    
+  }
+
+  .cart-icon {
+    color: #E0E0E0;
   }
 
   /* SEARCH BAR */
@@ -57,6 +62,7 @@
     background-color: #2a292b;
     color: #E0E0E0;
     placeholder-color: #888;
+    font-family: 'Poppins', sans-serif;
   }
   
   .input-search-icon {
