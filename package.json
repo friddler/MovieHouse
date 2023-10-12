@@ -1,7 +1,7 @@
 {
   "name": "moviehouse",
   "private": true,
-  "homepage": "https://friddler.github.io/moviehouse",
+  "homepage": "https://friddler.github.io/MovieHouse",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
