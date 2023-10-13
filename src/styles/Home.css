@@ -5,7 +5,7 @@
 .home-container {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 120vh;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -14,7 +14,8 @@
     font-family: 'Poppins', sans-serif;
     text-align: center;
     overflow: hidden;
-    background-color: rgb(0, 0, 0);
+    background-color: black;
+
 }
 
 /* VIDEO CONTAINER */
@@ -26,9 +27,10 @@
 
 .welcome-container {
     width: 70%;
+    height: 40%;
     display: flex;
     flex-direction: column; 
-    margin-bottom: 0;
+    margin: 0 auto;
     color: white;
 }
 
@@ -37,7 +39,6 @@
     margin: 0px;
     margin-bottom: 5px;
     margin-right: 60px;       
-   
 }
 
 .welcome-container h1{
@@ -67,9 +68,3 @@
     margin-bottom: 0;
     color: white;
 }
-
-#trending-title {
-    position: absolute;
-    left: 0;
-    margin-bottom: 20px;
-  }
