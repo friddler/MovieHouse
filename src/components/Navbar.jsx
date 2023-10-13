@@ -37,7 +37,7 @@ function Navbar(props) {
           SEARCH
         </Link>
         <Link to="/cart" className="nav-link">
-          <ShoppingCartIcon className="nav-icon" />
+          <ShoppingCartIcon className="nav-icon" /> {props.cart.length}
         </Link>
       </div>
     </div>

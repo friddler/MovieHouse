@@ -14,12 +14,21 @@ import SeriesGenre from "./components/SeriesGenre";
 import MovieInfo from "./pages/MovieInfo";
 
 function App() {
-  const [cart, setCart] = useState(["Avatar the blue","aviator"]);
+  const [cart, setCart] = useState([]);
 
-function remove (item) {
+function removeFromCart (item) {
   setCart(cart.filter(i => i != item));
 }
-function add(item){
+function addToCart(item){
+
+  //we dont want to add the same movie twice
+  //see if we can find out if the movie already exists in the cart by looking for its id
+  let existingMovies = cart.filter(m => item.id == m.id);
+  //if the length is more than 0, that means we already added this movie!
+  if(existingMovies.length > 0){
+    return;
+  }
+
   setCart([...cart,item]);
 }
 
@@ -31,10 +40,10 @@ function add(item){
         <Navbar cart={cart}/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="cart" element={<ShopCart cart={cart} add={add} remove={remove}/>}/>
+          <Route path="/cart" element={<ShopCart cart={cart} add={addToCart} remove={removeFromCart}/>}/>
           <Route path="/movies" element={<Movies/>}/>
           <Route path="/series" element={<Series/>}/>
-          <Route path="/movieinfo/:movieId" element={<MovieInfo />} /> {/* Lägg till vägen för MovieInfo */}
+          <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
 
         </Routes>
         <Footer/>
