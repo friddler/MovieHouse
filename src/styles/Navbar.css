@@ -5,7 +5,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
     background-color: #1a191b;
     font-family: 'Poppins', sans-serif;
   }
@@ -13,17 +12,21 @@
   /* NAV LINKS */
   
   .nav-link {
+    display: flex;
+    align-items: center;
     margin: 0 40px;
     color: #E0E0E0;
     transition: all 0.3s ease;
     text-decoration: none;
   }
   
-  .nav-link:hover,
-  .cart-icon:hover,
-  .input-search-icon:hover {
+  .nav-link:hover {
     font-weight: bold;
     color: rgb(129, 30, 196);
+  }
+
+  .nav-icon {
+    margin-right: 8px;
   }
   
   .nav-right {
@@ -32,48 +35,6 @@
     font-size: 17px;
   }
   
-  .nav-icons {
-    display: flex;
-    align-items: center;
-    
-  }
-
-  .cart-icon {
-    color: #E0E0E0;
-  }
-
-  /* SEARCH BAR */
-  
-  .search-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    transition: width 0.3s ease;
-  }
-  
-  .search-bar input {
-    width: 300px;
-    height: 30px;
-    border: none;
-    border-radius: 3px;
-    padding: 5px 40px 5px 10px;
-    font-size: 18px;
-    margin-right: 20px;
-    background-color: #2a292b;
-    color: #E0E0E0;
-    placeholder-color: #888;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .input-search-icon {
-    position: absolute;
-    right: 30px;
-    color: #888;
-    cursor: pointer;
-  }
-  
-
-
   /* RESPONSIVE */
 
 
@@ -82,9 +43,6 @@
       margin: 0 20px;
     }
   
-    .search-bar input {
-      width: 200px;
-    }
   }
 
 
