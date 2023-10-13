@@ -21,8 +21,8 @@ function Home() {
       </div>
 
       <div className="trending-container">
-        <KeyboardDoubleArrowDownIcon className="home-arrow"/>
         <h2>Trending now</h2>
+        <KeyboardDoubleArrowDownIcon className="home-arrow"/>
         <Trending />
       </div>
     </div>
