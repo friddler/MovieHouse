@@ -14,7 +14,7 @@ const ShopCart = (props) => {
             {
          props.cart.map((movieData) => (
         <li className='listItem' key={movieData.id}>
-        <img src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt="" />
+        <img id="cart-img"src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt="" />
         <h2>{movieData.title}</h2> 
         <button className='cartButton'>-</button> 0 <button className='cartButton'>+</button>
         <h4>pris:</h4>
