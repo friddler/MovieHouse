@@ -4,6 +4,7 @@ import Trending from "../components/Trending";
 function Home() {
   return (
     <div className="home-container">
+      
      
       <div className="welcome-container">
         <h2>Welcome To</h2>

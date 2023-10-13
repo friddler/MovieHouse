@@ -9,6 +9,7 @@ import SeriesAPI from "./components/SeriesAPI";
 import MovieAPI from "./components/MovieAPI";
 import MovieGenre from "./components/MovieGenre";
 import SeriesGenre from "./components/SeriesGenre";
+import MovieInfo from "./pages/MovieInfo";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path="/" element={<Home/>}/>
           <Route path="/movies" element={<Movies/>}/>
           <Route path="/series" element={<Series/>}/>
+          <Route path="/movieinfo/:movieId" element={<MovieInfo />} /> {/* Lägg till vägen för MovieInfo */}
+
         </Routes>
         <Footer/>
       </Router>
