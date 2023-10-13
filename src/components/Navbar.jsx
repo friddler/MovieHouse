@@ -14,7 +14,7 @@ import LiveTvIcon from "@mui/icons-material/LiveTv";
 5.Cart icon
 */
 
-function Navbar() {
+function Navbar(props) {
   return (
     <div className="navbar">
       <div className="nav-left">{/* Logo */}</div>
@@ -37,7 +37,7 @@ function Navbar() {
           SEARCH
         </Link>
         <Link to="/cart" className="nav-link">
-          <ShoppingCartIcon className="nav-icon" />
+          <ShoppingCartIcon className="nav-icon" /> {props.cart.length}
         </Link>
       </div>
     </div>

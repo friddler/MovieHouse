@@ -1,5 +1,6 @@
 import "../styles/Home.css";
 import Trending from "../components/Trending";
+import ShopCart from "../components/ShopCart";
 
 function Home() {
   return (
@@ -16,7 +17,7 @@ function Home() {
       <h2 id="trending-title">Trending now</h2>
       <Trending />
       </div>
-      
+    
     </div>
   )
 }

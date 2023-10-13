@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import '../Styles/MovieInfo.css';
 
-const MovieInfo = () => {
+const MovieInfo = (props) => {
     const { movieId } = useParams(); // Ta emot movieId från sökvägen
     const [movieData, setMovieData] = useState(null); // State för att lagra filminformation
     const apiKey = '6e8f505c75786ea1c4d7fa68159ede64';
@@ -46,6 +46,8 @@ const MovieInfo = () => {
             <p>Original Title: {movieData.original_title}</p>
             <img src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt={movieData.title} />
             {/* Lägg till fler element för att visa önskad filminformation */}
+            <button onClick={()=> props.addToCart(movieData)}>Buy</button>
+            <button>Rent</button>
         </div>
     );
 }
