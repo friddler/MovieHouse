@@ -4,9 +4,16 @@ import styled from './../styles/CartStyle.css';
 import { Collections } from '@mui/icons-material';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const ShopCart = (props) => {
 
+
+    const navigate = useNavigate();
+
+  const checkout = () => {
+    navigate("/checkout");
+  };
 
     return (
 
@@ -19,6 +26,8 @@ const ShopCart = (props) => {
         <button className='cartButton'>-</button> 0 <button className='cartButton'>+</button>
         <h4>pris:</h4>
         <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
+        <button className='checkoutButton' onClick={checkout}>Checkout</button>
+
        </li>
              ))}   
         </ul>  
