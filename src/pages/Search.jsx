@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Search.css';
+import { Link } from 'react-router-dom'; 
+
 
 const Search = (props) => {
   const [movieData, setMovieData] = useState([]);
@@ -50,6 +52,7 @@ const Search = (props) => {
       <div className="search-list">
         {movieData.map((movie, index) => (
           <div key={index} className="movie-card">
+            <Link to={`/movieinfo/${movie.id}`}>
             <img
               src={movie.poster_path
                 ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
@@ -63,6 +66,7 @@ const Search = (props) => {
                 e.target.style.display = 'none'; 
               }}
             />
+            </Link>
             {(!movie.poster_path && movie.title) && (
               <div className="movie-title">{movie.title}</div>
             )}
