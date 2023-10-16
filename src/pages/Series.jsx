@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/Series.css";
+import { Link } from 'react-router-dom'; 
 import Poster1 from "../assets/poster1.jpg";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import axios from "axios";
@@ -86,11 +87,13 @@ const Series = () => {
             <li key={series.id} className="serie-item">
               <h2>{series.title}</h2>
               {/* <p>Release Date: {series.release_date}</p> */}
+              <Link to={`/seriesinfo/${series.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${series.poster_path}`}
                 alt={series.title}
                 style={{ maxWidth: '200px' }}
               />
+              </Link>
             </li>
           ))
         ) : (

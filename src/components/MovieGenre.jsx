@@ -28,6 +28,8 @@ const MovieGenres = () => {
     setSelectedGenre(event.target.value);
   };
 
+  
+
   return (
     <div>
       <h1>Movie Genres</h1>
