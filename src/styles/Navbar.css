@@ -2,11 +2,13 @@
 
 .navbar {
     height: 80px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #1a191b;
+    background-color: #151516;
     font-family: 'Poppins', sans-serif;
+    
   }
 
   /* NAV LINKS */
