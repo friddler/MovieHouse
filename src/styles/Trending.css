@@ -15,7 +15,8 @@
     white-space: nowrap;
     background-color: black;
     color: white;
-    padding: 5% 0; 
+    padding: 1% 0; 
+
 }
 
 .trending-list {
@@ -28,7 +29,7 @@
 
 .trending-list img {
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.75);
+    box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.75);
     vertical-align: middle;
 }
 
@@ -43,4 +44,24 @@
 
 #trending-title {
     color: white;
+}
+
+/* SCROLLBAR */
+
+.trending-section::-webkit-scrollbar {
+    width: 10px; 
+    height: 10px;
+}
+
+.trending-section::-webkit-scrollbar-track {
+    background: #1b1b1b; 
+}
+
+.trending-section::-webkit-scrollbar-thumb {
+    background: rgb(129, 30, 196); 
+    border-radius: 5px;
+}
+
+.trending-section::-webkit-scrollbar-thumb:hover {
+    background: rgba(129, 30, 196, 0.8); 
 }
