@@ -50,7 +50,6 @@ const Search = (props) => {
       <div className="search-list">
         {movieData.map((movie, index) => (
           <div key={index} className="movie-card">
-            <h4 className="movie-title">{movie.title}</h4>
             <img
               src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
               alt={movie.title}
