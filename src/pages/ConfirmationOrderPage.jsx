@@ -4,13 +4,17 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ShopCart from "../components/ShopCart";
 import { PropaneSharp } from "@mui/icons-material";
+import App from "../App";
+
 
 const ConfirmationOrderPage = (props) => {
   const navigate = useNavigate();
+  const [cart, setCart] = useState(props.cart);
+
 
   const [redirectCancelled, setRedirectCancelled] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(10); // seconds
-  const [cart, setCart] = useState([]);
+  
 
   
   
@@ -59,9 +63,26 @@ const ConfirmationOrderPage = (props) => {
 
       
       
-     
-
-        <img id="img"src={`https://i.imgur.com/kCdTY8z.jpeg`} alt="" /> 
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cart.map((item) => (
+            <tr key={item.id}>
+              <td>{item.title}</td>
+              <td>1</td>
+              <td>${item.price}</td>
+              <img id="cart-img"src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" />
+            </tr>
+          ))}
+        </tbody>
+      </table>
+        
         
 
 

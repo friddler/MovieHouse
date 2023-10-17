@@ -49,7 +49,7 @@ function addToCart(item){
           <Route path="/search" element={<Search/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
-          <Route path="/confirmation" element={<ConfirmationOrderPage />} />
+          <Route path="/confirmation" element={<ConfirmationOrderPage cart={cart} />} />
 
 
         </Routes>

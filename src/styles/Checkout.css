@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
 /* CHECKOUT */
 
 .checkout-container {
@@ -17,13 +20,7 @@
     
 }
 
-.checkout-container h1 {
-    font-size: 30px;
-    color: white;
-    
-    
-    
-}
+
 
 .checkout-container form {
     width: 70%;
@@ -59,9 +56,27 @@
     border-radius: 10px;
     cursor: pointer;
     background-color: #000;
-    color: #fff;
+    color: #ccc;
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
+    
 }
+
+.checkout-container h1 {
+    display: flex;
+    align-items: center;
+    margin: 0 40px;
+    color: #E0E0E0;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    
+    
+    
+}
+
+.checkout-container button:hover {
+    font-weight: bold;
+    color: rgb(129, 30, 196);
+  }

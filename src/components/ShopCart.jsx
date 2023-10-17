@@ -10,7 +10,6 @@ import ConfirmationOrderPage from '../pages/ConfirmationOrderPage';
 
 const ShopCart = (props) => {
   const [empty, setEmpty] = useState(false);
-  
 
   useEffect(() => {
     if (props.cart.length === 0) {
@@ -34,8 +33,11 @@ const ShopCart = (props) => {
         <li className='listItem' key={movieData.id}>
         <img id="cart-img"src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt="" />
         <h2>{movieData.title}</h2> 
+        
+        <h4>Score: {movieData.vote_average}</h4>
+        
         <button className='cartButtonMin'>-</button><button className='cartcounter'> 0 </button><button className='cartButtonPlus'>+</button>
-        <h4>pris:</h4>
+        <h5>pris:</h5>
         <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
         
         <button className='globalCheckoutButton' onClick={checkout}>Checkout</button>
