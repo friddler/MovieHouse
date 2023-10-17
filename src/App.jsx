@@ -50,10 +50,8 @@ function addToCart(item){
           <Route path="/search" element={<Search/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
+          <Route path="/confirmation" element={<ConfirmationOrderPage cart={cart} />} />
           <Route path="/seriesinfo/:seriesId" element={<SeriesInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för SeriesInfo */}
-          <Route path="/confirmation" element={<ConfirmationOrderPage />} />
-
-
         </Routes>
         <Footer/>
       </Router>
