@@ -10,6 +10,11 @@ const ConfirmationOrderPage = (props) => {
 
   const [redirectCancelled, setRedirectCancelled] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(10); // seconds
+  const [cart, setCart] = useState([]);
+
+  
+  
+
 
   useEffect(() => {
     if (!redirectCancelled) {
@@ -29,6 +34,8 @@ const ConfirmationOrderPage = (props) => {
     setRedirectCancelled(true);
   };
 
+  
+
   const formatTimeRemaining = (timeRemaining) => {
     const minutes = Math.floor(timeRemaining / 60);
     const seconds = timeRemaining % 60;
@@ -36,13 +43,24 @@ const ConfirmationOrderPage = (props) => {
     return `${seconds}`;
   };
 
+
+  
+
   return (
+
+    
     <div className="confirmation-order-page">
+      
+
+      
       <h1>Thank you for your order!</h1>
 
       <p>Your order has been confirmed and will be shipped shortly.</p> 
 
       
+      
+     
+
         <img id="img"src={`https://i.imgur.com/kCdTY8z.jpeg`} alt="" /> 
         
 
@@ -57,7 +75,8 @@ const ConfirmationOrderPage = (props) => {
       </div>
 
       <button onClick={cancelRedirect}>Cancel Redirect</button>
-    </div>
+    </div> 
+    
   );
 };
 
