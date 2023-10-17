@@ -7,6 +7,14 @@ import { useEffect } from 'react';
 
 const ShopCart = (props) => {
 
+    function increment(movieData){
+        movieData.antal += 1;
+        props.updateCart();
+    }
+    function decrement(movieData){
+        movieData.antal -= 1;
+        props.updateCart();
+    }
 
     return (
 
@@ -16,7 +24,7 @@ const ShopCart = (props) => {
         <li className='listItem' key={movieData.id}>
         <img src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt="" />
         <h2>{movieData.title}</h2> 
-        <button className='cartButton'>-</button> 0 <button className='cartButton'>+</button>
+        <button onClick={() => decrement(movieData)} className='cartButton'>-</button> {movieData.antal} <button onClick={() => increment(movieData)} className='cartButton'>+</button>
         <h4>pris:</h4>
         <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
        </li>

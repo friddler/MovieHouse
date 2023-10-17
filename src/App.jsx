@@ -16,10 +16,18 @@ import MovieInfo from "./pages/MovieInfo";
 function App() {
   const [cart, setCart] = useState([]);
 
+function updateCart(){
+  setCart([...cart]);
+}
+
 function removeFromCart (item) {
   setCart(cart.filter(i => i != item));
 }
 function addToCart(item){
+
+  console.log(item);
+  item.antal = 1;
+  console.log(item);
 
   //we dont want to add the same movie twice
   //see if we can find out if the movie already exists in the cart by looking for its id
@@ -40,7 +48,7 @@ function addToCart(item){
         <Navbar cart={cart}/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/cart" element={<ShopCart cart={cart} add={addToCart} remove={removeFromCart}/>}/>
+          <Route path="/cart" element={<ShopCart cart={cart} updateCart={updateCart} add={addToCart} remove={removeFromCart}/>}/>
           <Route path="/movies" element={<Movies/>}/>
           <Route path="/series" element={<Series/>}/>
           <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
