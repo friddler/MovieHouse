@@ -58,3 +58,9 @@
     box-shadow: 0 8px 8px rgba(254, 254, 254, 0.1);
   }
   
+  .default-image {
+    width: 200px; 
+    height: auto; 
+    border: 1px solid #ccc; 
+    
+  }

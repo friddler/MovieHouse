@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import "../styles/Movies.css";
+import { Link } from 'react-router-dom'; 
 // import Poster1 from "../assets/poster1.jpg";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import axios from "axios";
+
 
 const Movies = () => {
   const [genres, setGenres] = useState([]);
@@ -56,6 +58,8 @@ const Movies = () => {
     fetchData();
   }, []);
 
+  
+
   return (
     <div className="movies-container">
       <div className="movie-header">
@@ -81,16 +85,19 @@ const Movies = () => {
 
       <div className="movie-list">
         {movies && movies.length > 0 ? (
-          movies.map((movie) => (
+          movies.map((movie, index) => (
             <li key={movie.id} className="movie-item">
               {/* <h2>{movie.title}</h2> */}
               {/* <p>Release Date: {movie.release_date}</p> */}
+              <Link to={`/movieinfo/${movie.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 alt={movie.title}
                 style={{ maxWidth: '200px' }}
               />
+              </Link>
             </li>
+            
           ))
         ) : (
           <p>No movies found.</p>

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/Search.css';
+import { Link } from 'react-router-dom'; 
+
 
 const Search = (props) => {
   const [movieData, setMovieData] = useState([]);
@@ -10,7 +12,7 @@ const Search = (props) => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchTerm}`);
+        const response = await axios.get(`https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=${apiKey}&query=${searchTerm}`);
 
         if (response.status !== 200) {
           throw new Error('Något gick fel vid hämtning av filmer');
@@ -50,17 +52,31 @@ const Search = (props) => {
       <div className="search-list">
         {movieData.map((movie, index) => (
           <div key={index} className="movie-card">
+            <Link to={`/movieinfo/${movie.id}`}>
             <img
-              src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+              src={movie.poster_path
+                ? `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+                : "image.png" 
+                
+              }
               alt={movie.title}
-              className="movie-image"
+              className={movie.poster_path ? "movie-image" : "default-image"}
+
+              onError={(e) => {
+                e.target.style.display = 'none'; 
+              }}
             />
+            </Link>
+            {(!movie.poster_path && movie.title) && (
+              <div className="movie-title">{movie.title}</div>
+            )}
           </div>
         ))}
       </div>
     </div>
   );
   
+
 };
 
 export default Search;
