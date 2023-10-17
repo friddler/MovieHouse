@@ -12,6 +12,7 @@ import MovieAPI from "./components/MovieAPI";
 import MovieGenre from "./components/MovieGenre";
 import SeriesGenre from "./components/SeriesGenre";
 import MovieInfo from "./pages/MovieInfo";
+import SeriesInfo from "./pages/SeriesInfo";
 import Search from "./pages/Search";
 import Checkout from "./pages/Checkout";
 import ConfirmationOrderPage from "./pages/ConfirmationOrderPage";
@@ -49,6 +50,7 @@ function addToCart(item){
           <Route path="/search" element={<Search/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
+          <Route path="/seriesinfo/:seriesId" element={<SeriesInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för SeriesInfo */}
           <Route path="/confirmation" element={<ConfirmationOrderPage />} />
 
 
