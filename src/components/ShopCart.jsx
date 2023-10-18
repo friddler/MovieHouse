@@ -16,12 +16,11 @@ const ShopCart = (props) => {
     }
     function decrement(movieData){
         movieData.quantity -= 1;
-        props.updateCart();
-
-        if (movieData.quantity < 0){
-            movieData.quantity = 0;
+        
+        if (movieData.quantity < 1){
+            movieData.quantity = 1;
         }
- 
+        props.updateCart();
     }
   const [empty, setEmpty] = useState(false);
 
@@ -51,11 +50,8 @@ const ShopCart = (props) => {
         <h2>{movieData.title}</h2> 
         
         <h4>Score: {movieData.vote_average}</h4>
-        
-        <button className='cartButtonMin'>-</button><button className='cartcounter'> 0 </button><button className='cartButtonPlus'>+</button>
-        <h5>pris:</h5>
-        <button onClick={() => decrement(movieData)} className='cartButton'>-</button> {movieData.quantity} <button onClick={() => increment(movieData)} className='cartButton'>+</button>
-        <h4>price:</h4>
+        <h4>Price: {movieData.quantity*49}</h4>
+        <button onClick={() => increment(movieData)} className='cartButtonPlus'>+</button><button className='cartcounter'> {movieData.quantity} </button><button onClick={() => decrement(movieData)}  className='cartButtonMin'>-</button>
         <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
         
         <button className='globalCheckoutButton' onClick={checkout}>Checkout</button>
