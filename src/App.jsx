@@ -24,22 +24,37 @@ function removeFromCart (item) {
   setCart(cart.filter(i => i != item));
 }
 function addToCart(item){
+  item.quantity = 1;
 
-  console.log(item);
-  item.antal = 1;
-  console.log(item);
-
-  //we dont want to add the same movie twice
-  //see if we can find out if the movie already exists in the cart by looking for its id
   let existingMovies = cart.filter(m => item.id == m.id);
-  //if the length is more than 0, that means we already added this movie!
   if(existingMovies.length > 0){
     return;
+    
   }
-
+  showSnackBar();
   setCart([...cart,item]);
 }
 
+function cartPrice () {
+let totalPrice = 0;
+
+for (let i = 0; i < cart.length; i++) {
+
+  var movie = cart[i];
+  totalPrice += 49 * movie.quantity;
+
+}
+
+return totalPrice;
+
+}
+
+function showSnackBar() {
+    var x = document.getElementById("snackbar");
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+    console.log("fdkwåfmwlöfmw")
+  }
 
 
   return (
@@ -48,14 +63,14 @@ function addToCart(item){
         <Navbar cart={cart}/>
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/cart" element={<ShopCart cart={cart} updateCart={updateCart} add={addToCart} remove={removeFromCart}/>}/>
+          <Route path="/cart" element={<ShopCart cart={cart} updateCart={updateCart} add={addToCart} remove={removeFromCart} cartPrice={cartPrice}/>}/>
           <Route path="/movies" element={<Movies/>}/>
           <Route path="/series" element={<Series/>}/>
-          <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
-
+          <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart} showSnackBar={showSnackBar}/>} /> {/* Lägg till vägen för MovieInfo */}
         </Routes>
         <Footer/>
       </Router>
+      <div id="snackbar">Added to cart!</div>
     </div>
   );
 }

@@ -47,7 +47,7 @@ const MovieInfo = (props) => {
             <img src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt={movieData.title} />
             {/* Lägg till fler element för att visa önskad filminformation */}
             <button onClick={()=> props.addToCart(movieData)}>Buy</button>
-            <button>Rent</button>
+            <button>rent</button>
         </div>
     );
 }
