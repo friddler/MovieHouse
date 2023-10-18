@@ -51,3 +51,19 @@ body{
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
 }
+
+
+
+@media screen and (max-width: 768px) {
+
+
+  
+  #root {
+    flex-direction: column; 
+    width: 155%;
+    min-height: 200vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+}

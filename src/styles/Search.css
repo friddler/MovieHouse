@@ -15,7 +15,7 @@
   }
   
   .search-input {
-    width: 100%;
+    width: 99%;
     padding: 10px;
     font-size: 1.2em;
     margin: 10px 0;
@@ -58,9 +58,35 @@
     box-shadow: 0 8px 8px rgba(254, 254, 254, 0.1);
   }
   
-  .default-image {
-    width: 200px; 
-    height: auto; 
-    border: 1px solid #ccc; 
-    
+
+ 
+/* Stilar för mobila enheter med en maximal bredd på 768px */
+@media screen and (max-width: 768px) {
+  .search-list {
+    flex-direction: column; /* Ändra riktningen till kolumn */
+    align-items: center; /* Centrera innehållet vertikalt */
   }
+
+  .search-input {
+    width: 98%; /* Fyll hela bredden på mobila enheter */
+  }
+
+  .movie-card {
+    width: 100%; /* Fyll hela bredden på mobila enheter */
+    margin-bottom: 20px; /* Lägg till avstånd mellan korten */
+  }
+
+  .image-box,
+  .text-box {
+    flex: 1; /* Ta upp hela bredden av fältet */
+    margin: 0; /* Ta bort marginaler mellan bild och text */
+  }
+
+  .image-box {
+    margin-bottom: 10px; /* Lägg till lite avstånd under bilden */
+  }
+
+  .start-section {
+    height: auto; /* Återställ höjden på sektionen */
+  }
+}
