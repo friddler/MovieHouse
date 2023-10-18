@@ -12,6 +12,10 @@ import MovieAPI from "./components/MovieAPI";
 import MovieGenre from "./components/MovieGenre";
 import SeriesGenre from "./components/SeriesGenre";
 import MovieInfo from "./pages/MovieInfo";
+import SeriesInfo from "./pages/SeriesInfo";
+import Search from "./pages/Search";
+import Checkout from "./pages/Checkout";
+import ConfirmationOrderPage from "./pages/ConfirmationOrderPage";
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -67,6 +71,11 @@ function showSnackBar() {
           <Route path="/movies" element={<Movies/>}/>
           <Route path="/series" element={<Series/>}/>
           <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart} showSnackBar={showSnackBar}/>} /> {/* Lägg till vägen för MovieInfo */}
+          <Route path="/search" element={<Search/>}/>
+          <Route path="/checkout" element={<Checkout/>}/>
+          <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
+          <Route path="/confirmation" element={<ConfirmationOrderPage cart={cart} />} />
+          <Route path="/seriesinfo/:seriesId" element={<SeriesInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för SeriesInfo */}
         </Routes>
         <Footer/>
       </Router>

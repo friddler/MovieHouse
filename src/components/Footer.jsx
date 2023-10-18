@@ -1,7 +1,8 @@
-
+import "../styles/Footer.css";
 function Footer() {
   return (
-    <div>
+    <div className="footer">
+      <p>&copy; 2023 moviehouse.com</p>
       
     </div>
   )

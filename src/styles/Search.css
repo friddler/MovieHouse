@@ -1,0 +1,66 @@
+.search-container {
+    max-width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: black;
+
+  }
+
+  #utforska {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: white;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+    margin: 10px 0;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+  }
+  
+  .search-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; 
+  }
+  
+  .movie-card {
+    border-radius: 5px;
+    width: 300px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    background-color: black;
+  }
+  
+  .movie-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+  }
+  
+  .movie-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 8px 8px rgba(254, 254, 254, 0.1);
+  }
+  
+  .default-image {
+    width: 200px; 
+    height: auto; 
+    border: 1px solid #ccc; 
+    
+  }

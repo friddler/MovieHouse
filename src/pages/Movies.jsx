@@ -1,97 +1,64 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Movies.css";
-import Poster1 from "../assets/poster1.jpg";
+import { Link } from 'react-router-dom'; 
+// import Poster1 from "../assets/poster1.jpg";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import axios from "axios";
+
 
 const Movies = () => {
+  const [genres, setGenres] = useState([]);
   const [showGenres, setShowGenres] = useState(false);
 
-  const genres = [
-    "Action",
-    "Comedy",
-    "Drama",
-    "Horror",
-    "Sci-fi",
-    "Romance",
-    "Documentary",
-  ];
-
-  const mockData = [
-    {
-      id: 1,
-      title: "Inception",
-      poster: Poster1,
-      genre: "Sci-fi",
-    },
-    {
-      id: 2,
-      title: "The Dark Knight",
-      poster: Poster1,
-      genre: "Action",
-    },
-    {
-        id: 1,
-        title: "Inception",
-        poster: Poster1,
-        genre: "Sci-fi",
-      },
-      {
-        id: 2,
-        title: "The Dark Knight",
-        poster: Poster1,
-        genre: "Action",
-      },
-      {
-        id: 1,
-        title: "Inception",
-        poster: Poster1,
-        genre: "Sci-fi",
-      },
-      {
-        id: 2,
-        title: "The Dark Knight",
-        poster: Poster1,
-        genre: "Action",
-      },
-      {
-        id: 1,
-        title: "Inception",
-        poster: Poster1,
-        genre: "Sci-fi",
-      },
-      {
-        id: 2,
-        title: "The Dark Knight",
-        poster: Poster1,
-        genre: "Action",
-      },
-      {
-        id: 1,
-        title: "Inception",
-        poster: Poster1,
-        genre: "Sci-fi",
-      },
-      {
-        id: 2,
-        title: "The Dark Knight",
-        poster: Poster1,
-        genre: "Action",
-      },
-      {
-        id: 1,
-        title: "Inception",
-        poster: Poster1,
-        genre: "Sci-fi",
-      },
-      {
-        id: 2,
-        title: "The Dark Knight",
-        poster: Poster1,
-        genre: "Action",
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('https://api.themoviedb.org/3/genre/movie/list', {
+          params: { language: 'en' },
+          headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MmRkYjgyMWQ4NzllMGVkOTYyODlmMjAzMTZjOTFkMyIsInN1YiI6IjY1MjNlMzYzZmQ2MzAwMDEzOWU0OTQ2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.og5zxDtz-s3PxXBKJ3QhNaYiy_ZNJjKLS5bdnqc5Hdk',
+          },
+        });
+        setGenres(response.data.genres);
+      } catch (error) {
+        console.error('Error fetching data:', error);
       }
-  ];
+    };
 
-  const [movies] = useState(mockData);
+    fetchData();
+  }, []); 
+
+  const [movies,setMovies] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => { 
+      const moviesData = {
+        method: 'GET',
+        url: 'https://api.themoviedb.org/3/discover/movie',
+        params: {
+          include_adult: 'false',
+          include_video: 'false',
+          language: 'en-US',
+          page: '1',
+          sort_by: 'popularity.desc'
+        },
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MmRkYjgyMWQ4NzllMGVkOTYyODlmMjAzMTZjOTFkMyIsInN1YiI6IjY1MjNlMzYzZmQ2MzAwMDEzOWU0OTQ2OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.og5zxDtz-s3PxXBKJ3QhNaYiy_ZNJjKLS5bdnqc5Hdk'
+    }
+  }
+  try {
+    const response = await axios.request(moviesData);
+    setMovies(response.data.results);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
+  }, []);
+
+  
 
   return (
     <div className="movies-container">
@@ -106,20 +73,35 @@ const Movies = () => {
           <span className="arrow-icon"><ArrowDropDownIcon/></span>
           {showGenres && (
             <ul>
-              {genres.map((genre, index) => (
-                <li key={index}>{genre}</li>
-              ))}
+              {genres.map((genre) => (
+          <option key={genre.id} value={genre.id}>
+            {genre.name}
+          </option>
+        ))}
             </ul>
           )}
         </div>
       </div>
 
       <div className="movie-list">
-        {movies.map((movie) => (
-          <div key={movie.id} className="movie-item">
-            <img src={movie.poster} alt={movie.title} />
-          </div>
-        ))}
+        {movies && movies.length > 0 ? (
+          movies.map((movie, index) => (
+            <li key={movie.id} className="movie-item">
+              {/* <h2>{movie.title}</h2> */}
+              {/* <p>Release Date: {movie.release_date}</p> */}
+              <Link to={`/movieinfo/${movie.id}`}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt={movie.title}
+                style={{ maxWidth: '200px' }}
+              />
+              </Link>
+            </li>
+            
+          ))
+        ) : (
+          <p>No movies found.</p>
+        )}
       </div>
     </div>
   );
