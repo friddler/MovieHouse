@@ -52,12 +52,16 @@ const Movies = () => {
     const response = await axios.request(moviesData);
     setMovies(response.data.results);
       } catch (error) {
-        console.error(error);
+        console.error(genres);
       }
     }
     fetchData();
   }, []);
 
+  const handleClickOption = async () => {
+    
+    console.log("clicked!", {genres});
+  }
   
 
   return (
@@ -74,7 +78,7 @@ const Movies = () => {
           {showGenres && (
             <ul>
               {genres.map((genre) => (
-          <option key={genre.id} value={genre.id}>
+          <option onClick={handleClickOption} key={genre.id} value={genre.id}>
             {genre.name}
           </option>
         ))}

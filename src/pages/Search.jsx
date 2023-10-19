@@ -24,12 +24,15 @@ const Search = (props) => {
           ...responses[1].data.results,
         ];
 
-        setData(combinedData);
+        //Detta filtrerar bort alla filmer och serier som inte har en poster_path
+        const filteredData = combinedData.filter((item) => item.poster_path);
+
+        setData(filteredData);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+     
     if (searchTerm !== "") {
       fetchMedia();
     }
@@ -55,18 +58,16 @@ const Search = (props) => {
             <Link to={`/${item.title ? "movieinfo" : "seriesinfo"}/${item.id}`}>
               <img
                 src={
-                  item.poster_path
-                    ? `https://image.tmdb.org/t/p/w300${item.poster_path}`
-                    : "image.png"
+                  `https://image.tmdb.org/t/p/w300${item.poster_path}`
                 }
                 alt={item.title || item.name}
-                className={item.poster_path ? "media-image" : "default-image"}
+                className="media-image"
                 onError={(e) => {
                   e.target.style.display = "none";
                 }}
               />
             </Link>
-            {!item.poster_path && (item.title || item.name) && (
+            {item.title || item.name && (
               <div className="media-title">{item.title || item.name}</div>
             )}
           </div>
