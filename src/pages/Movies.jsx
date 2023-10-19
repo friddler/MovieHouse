@@ -52,7 +52,7 @@ const Movies = () => {
     const response = await axios.request(moviesData);
     setMovies(response.data.results);
       } catch (error) {
-        console.error(error);
+        console.error(genres);
       }
     }
     fetchData();
@@ -81,7 +81,9 @@ const Movies = () => {
           {showGenres && (
             <ul>
               {genres.map((genre) => (
+
           <li key={genre.id} onClick={() => handleGenreSelection(genre.id)}>
+
             {genre.name}
           </li>
         ))}

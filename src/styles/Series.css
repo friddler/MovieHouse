@@ -1,6 +1,7 @@
 .series-container {
     font-family: 'Poppins', sans-serif;
     padding: 30px;
+    background-color: black;
 }
 
 .serie-header {
@@ -12,6 +13,8 @@
 
 .serie-header h1 {
     font-size: 30px;
+    color: white;
+    
 }
 
 /* GENRE DROP */
@@ -80,6 +83,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
+    list-style: none;
 }
 
 .serie-item img {

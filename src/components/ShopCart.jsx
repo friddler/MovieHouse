@@ -9,6 +9,19 @@ import ConfirmationOrderPage from '../pages/ConfirmationOrderPage';
 
 
 const ShopCart = (props) => {
+
+    function increment(movieData){
+        movieData.quantity += 1;
+        props.updateCart();
+    }
+    function decrement(movieData){
+        movieData.quantity -= 1;
+        
+        if (movieData.quantity < 1){
+            movieData.quantity = 1;
+        }
+        props.updateCart();
+    }
   const [empty, setEmpty] = useState(false);
 
   useEffect(() => {
@@ -27,7 +40,9 @@ const ShopCart = (props) => {
 
     return (
 
-      <ul className={`shopCart ${empty && 'empty'}`}>
+      
+     <div>
+        <ul className={`shopCart ${empty && 'empty'}`}>
             {
          props.cart.map((movieData) => (
         <li className='listItem' key={movieData.id}>
@@ -35,9 +50,8 @@ const ShopCart = (props) => {
         <h2>{movieData.title}</h2> 
         
         <h4>Score: {movieData.vote_average}</h4>
-        
-        <button className='cartButtonMin'>-</button><button className='cartcounter'> 0 </button><button className='cartButtonPlus'>+</button>
-        <h5>pris:</h5>
+        <h4>Price: {movieData.quantity*49}</h4>
+        <button onClick={() => increment(movieData)} className='cartButtonPlus'>+</button><button className='cartcounter'> {movieData.quantity} </button><button onClick={() => decrement(movieData)}  className='cartButtonMin'>-</button>
         <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
         
         <button className='globalCheckoutButton' onClick={checkout}>Checkout</button>
@@ -45,10 +59,13 @@ const ShopCart = (props) => {
        </li>
              ))}   
         </ul> 
-        
-        
-        
-        
+
+        <h3>Total price:{props.cartPrice()}</h3>
+      
+      
+      </div>
+    
+
     )
     }
 
