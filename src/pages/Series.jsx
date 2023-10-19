@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/Series.css";
 import { Link } from 'react-router-dom'; 
-import Poster1 from "../assets/poster1.jpg";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import axios from "axios";
 
@@ -41,7 +40,8 @@ const Series = () => {
                 include_null_first_air_dates: 'false',
                 language: 'en-US',
                 page: currentPage,
-                sort_by: 'popularity.desc'
+                sort_by: 'popularity.desc',
+                ...(selectedGenre && { with_genres: selectedGenre })
                  },
                 headers: {
                 accept: 'application/json',
@@ -50,16 +50,17 @@ const Series = () => {
                 };  
             try {
                 const response  = await axios.request(seriesData); 
-                setSeries(response.data.results);
+                setSeries((prevSeries) => [...prevSeries, ...response.data.results]);
                 } catch (error) {
                     console.error(error);
                 }
             }
             fetchData();
-        }, [currentPage]);
+        }, [currentPage, selectedGenre]);
 
         const handleGenreSelection = (genreId) => {
           setSelectedGenre(genreId);
+          setSeries([]);
           setCurrentPage(1);
         };
       
