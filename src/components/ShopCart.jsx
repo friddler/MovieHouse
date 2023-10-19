@@ -34,10 +34,10 @@ const ShopCart = (props) => {
         <img id="cart-img"src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt="" />
         <h2>{movieData.title}</h2> 
         
-        <h4>Score: {movieData.vote_average}</h4>
+        
         
         <button className='cartButtonMin'>-</button><button className='cartcounter'> 0 </button><button className='cartButtonPlus'>+</button>
-        <h5>pris:</h5>
+        <h5>Pris:</h5>
         <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
         
         <button className='globalCheckoutButton' onClick={checkout}>Checkout</button>

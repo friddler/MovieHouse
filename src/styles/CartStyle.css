@@ -19,7 +19,7 @@
   }
   .globalCheckoutButton {
     position: fixed;
-    bottom: 0;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 88px;
@@ -29,6 +29,7 @@
     cursor: pointer;
     background-color: #000;
     color: #ccc;
+    
   }
 
 
@@ -82,6 +83,7 @@
     color: #ccc;
     margin-left: 1rem;
     margin-right: 1rem;
+    
   }
   
   #cart-img {
@@ -164,6 +166,7 @@
     color: #E0E0E0;
     transition: all 0.3s ease;
     text-decoration: none;
+    
     
     
     
