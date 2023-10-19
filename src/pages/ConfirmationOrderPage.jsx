@@ -13,7 +13,7 @@ const ConfirmationOrderPage = (props) => {
 
 
   const [redirectCancelled, setRedirectCancelled] = useState(false);
-  const [timeRemaining, setTimeRemaining] = useState(10); // seconds
+  const [timeRemaining, setTimeRemaining] = useState(1000); // seconds
 
 
 
