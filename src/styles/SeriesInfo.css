@@ -119,3 +119,28 @@
 .buttons-container button:hover {
     background-color: rgb(98, 0, 150);
 }
+
+
+@media screen and (max-width: 768px) {
+    .serie-content {
+        flex-direction: column;
+    }
+
+    .serie-details-container {
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .serie-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .serie-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

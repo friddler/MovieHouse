@@ -1,4 +1,8 @@
 .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     max-width: 100%;
     min-height: 100vh;
     margin: 0 auto;
@@ -30,7 +34,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; 
+    gap: 30px; 
   }
   
   .movie-card {
@@ -58,37 +62,22 @@
     box-shadow: 0 8px 8px rgba(254, 254, 254, 0.1);
   }
   
-
- 
-/* Stilar för mobila enheter med en maximal bredd på 768px */
 @media screen and (max-width: 768px) {
+  .movie-card {
+    width: 100%;
+    padding: 0;
+  }
+
   .search-list {
-    max-width: 100vh;
-    height: 160vh;
-    flex-direction: column; /* Ändra riktningen till kolumn */
-    align-items: center; /* Centrera innehållet vertikalt */
+    display: flex;
+    align-content: center;
+    justify-content: center;
   }
 
   .search-input {
-    width: 95%; /* Fyll hela bredden på mobila enheter */
+    width: 95%;
   }
 
-  .movie-card {
-    width: 100%; /* Fyll hela bredden på mobila enheter */
-    margin-bottom: 20px; /* Lägg till avstånd mellan korten */
-  }
-
-  .image-box,
-  .text-box {
-    flex: 1; /* Ta upp hela bredden av fältet */
-    margin: 0; /* Ta bort marginaler mellan bild och text */
-  }
-
-  .image-box {
-    margin-bottom: 10px; /* Lägg till lite avstånd under bilden */
-  }
-
-  .start-section {
-    height: auto; /* Återställ höjden på sektionen */
-  }
 }
+  
+
