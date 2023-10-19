@@ -1,83 +1,113 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
 .search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    max-width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  background-color: black;
+}
+
+#utforska {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  color: white;
+}
+
+.search-input {
+  width: 99%;
+  padding: 10px;
+  font-size: 1.2em;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.search-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.media-card {
+  border-radius: 5px;
+  width: 300px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  background-color: black;
+  align-items: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.media-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.media-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  min-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.media-image {
+  width: 100%;
+  height: 450px;
+  border-radius: 5px;
+  object-fit: cover;
+  box-shadow: 0 8px 8px rgba(254, 254, 254, 0.1);
+}
+
+@media screen and (max-width: 768px) {
+  .media-card {
+    width:  300px;
+    height: 400px;
+    object-fit: cover;
+    margin: 0 auto;  
+    box-shadow: none;
+    transition: none;
+    position: relative;  
+    object-fit: contain;
+    transform: none;
 
   }
 
-  #utforska {
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    color: white;
-  }
-  
-  .search-input {
-    width: 99%;
-    padding: 10px;
-    font-size: 1.2em;
-    margin: 10px 0;
-    display: block;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: transparent;
-    color: white;
-  }
-  
-  .search-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px; 
-  }
-  
-  .movie-card {
-    border-radius: 5px;
-    width: 300px;
-    padding: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    background-color: black;
-  }
-  
-  .movie-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    color: white;
-  }
-  
-  .movie-image {
+  .media-image {
     width: 100%;
     height: auto;
-    border-radius: 5px;
-    box-shadow: 0 8px 8px rgba(254, 254, 254, 0.1);
-  }
-  
-@media screen and (max-width: 768px) {
-  .movie-card {
-    width: 100%;
-    padding: 0;
+    object-fit: contain;
+    max-width: 100%;
   }
 
   .search-list {
     display: flex;
     align-content: center;
     justify-content: center;
+    gap: 25px;
   }
 
   .search-input {
     width: 95%;
   }
-
 }
-  
-
