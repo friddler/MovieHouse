@@ -122,8 +122,9 @@ const Movies = () => {
           <p>No movies found.</p>
         )}
       </div>
-
+          <div className="loadButtonDiv">
       <button className="loadButton" onClick={loadMore} >Load More</button>
+      </div>
     </div>
   );
 };

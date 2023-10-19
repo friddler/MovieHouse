@@ -2,6 +2,7 @@
     font-family: 'Poppins', sans-serif;
     padding: 30px;
     background-color: black;
+    min-height: 78vh;
 }
 
 .movie-header {
@@ -98,6 +99,20 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+.loadButtonDiv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.loadButton {
+    padding: 5px;
+    margin-top: 20px;
+    
+}
+
+
+
 @media screen and (max-width: 768px) {
     
     .movie-header {
@@ -137,4 +152,6 @@
         transform: scale(1.05);
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
+
+    
 }
