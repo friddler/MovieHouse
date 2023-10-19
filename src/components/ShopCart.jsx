@@ -1,27 +1,25 @@
-import DeleteIcon from '@mui/icons-material/Delete';
-import imgMovie from './../assets/avataren.jpeg';
-import styled from './../styles/CartStyle.css';
-import { Collections } from '@mui/icons-material';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import DeleteIcon from "@mui/icons-material/Delete";
+import imgMovie from "./../assets/avataren.jpeg";
+import "../styles/CartStyle.css";
+import { Collections } from "@mui/icons-material";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import ConfirmationOrderPage from '../pages/ConfirmationOrderPage';
-
+import ConfirmationOrderPage from "../pages/ConfirmationOrderPage";
 
 const ShopCart = (props) => {
+  function increment(movieData) {
+    movieData.quantity += 1;
+    props.updateCart();
+  }
+  function decrement(movieData) {
+    movieData.quantity -= 1;
 
-    function increment(movieData){
-        movieData.quantity += 1;
-        props.updateCart();
+    if (movieData.quantity < 1) {
+      movieData.quantity = 1;
     }
-    function decrement(movieData){
-        movieData.quantity -= 1;
-        
-        if (movieData.quantity < 1){
-            movieData.quantity = 1;
-        }
-        props.updateCart();
-    }
+    props.updateCart();
+  }
   const [empty, setEmpty] = useState(false);
 
   useEffect(() => {
@@ -30,7 +28,7 @@ const ShopCart = (props) => {
     } else {
       setEmpty(false);
     }
-  }, [props.cart]); 
+  }, [props.cart]);
 
   const navigate = useNavigate();
 
@@ -63,28 +61,58 @@ const ShopCart = (props) => {
 
   }
 
-    return (
-     <div>
-        <ul className={`shopCart ${empty && 'empty'}`}>
-            {
-         props.cart.map((movieData) => (
-        <li className='listItem' key={movieData.id}>
-        <img id="cart-img"src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`} alt="" />
-        <h2>{movieData.title}</h2> 
-        
-        <h4>Score: {movieData.vote_average}</h4>
-        <h4>Price: {moviePrice(movieData)}</h4>
-        <h4>{showRentOrBuy(movieData)}</h4>
-        <button onClick={() => increment(movieData)} className='cartButtonPlus'>+</button><button className='cartcounter'> {movieData.quantity} </button><button onClick={() => decrement(movieData)}  className='cartButtonMin'>-</button>
-        <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
-        <button className='globalCheckoutButton' onClick={checkout}>Checkout</button>
-
-       </li>
-             ))}   
-        </ul>
-        <h3>Total price:{props.cartPrice()}</h3>
+  return (
+    <div className="cartContainer">
+      <ul className={`shopCart ${empty && "empty"}`}>
+        {props.cart.map((movieData) => (
+          <li className="listItem" key={movieData.id}>
+            <div className="cart-img-container">
+              <img
+                className="cart-img"
+                src={`https://image.tmdb.org/t/p/w300${movieData.poster_path}`}
+                alt={movieData.title}
+              />
+            </div>
+            <div className="movieDetails">
+              <h2>{movieData.title}</h2>
+              <h4>Price: {movieData.quantity * 49 + "kr"}</h4>
+            </div>
+            <div className="actions">
+              <div className="quantityControls">
+                <button
+                  onClick={() => decrement(movieData)}
+                  className="cartButtonMin"
+                >
+                  -
+                </button>
+                <span className="cartcounter">{movieData.quantity}</span>
+                <button
+                  onClick={() => increment(movieData)}
+                  className="cartButtonPlus"
+                >
+                  +
+                </button>
+              </div>
+              <button
+                className="IconButton"
+                onClick={() => props.remove(movieData)}
+              >
+                <DeleteIcon />
+              </button>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <div className="checkoutSection">
+        <h3 className="total-price">Total price: {props.cartPrice() + "kr"}</h3>
+        <button className="globalCheckoutButton" onClick={checkout}>
+          Checkout
+        </button>
       </div>
+      </div>
+    
+
     )
-    }
+        }
 
 export default ShopCart;

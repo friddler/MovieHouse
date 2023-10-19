@@ -41,10 +41,34 @@
 
 
   @media (max-width: 768px) {
+
     .nav-link {
-      margin: 0 20px;
+      margin: 0 10px;
     }
   
+    .nav-right {
+      margin-right: 10px;
+    }
+
+    .nav-icon {
+      margin-right: 7px;
+    }
+
+    .nav-link {
+      font-size: 8px;
+    }
+
+    .nav-right {
+      font-size: 14px;
+    }
+
+    .navbar {
+      height: 60px;
+
+   }
+
+
+
   }
 
 
