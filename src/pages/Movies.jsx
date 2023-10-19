@@ -45,6 +45,7 @@ const Movies = () => {
             language: "en-US",
             page: currentPage,
             sort_by: "popularity.desc",
+            ...(selectedGenre && { with_genres: selectedGenre })
           },
           headers: {
             accept: "application/json",
@@ -53,17 +54,18 @@ const Movies = () => {
         };
 
         const response = await axios.request(moviesData);
-        setMovies(response.data.results);
+        setMovies((prevMovies) => [...prevMovies, ...response.data.results]);
       } catch (error) {
         console.error("Error fetching movies:", error);
       }
     };
 
     fetchData();
-  }, [currentPage]);
+  }, [currentPage, selectedGenre]);
 
   const handleGenreSelection = (genreId) => {
     setSelectedGenre(genreId);
+    setMovies([]); // clears the current movies
     setCurrentPage(1); // Reset to the first page when changing the genre
   };
 
