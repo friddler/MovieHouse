@@ -10,6 +10,7 @@ const Series = () => {
  const [genres, setGenres] = useState([]);
  const [selectedGenre, setSelectedGenre] = useState(null);
  const [series, setSeries] = useState([])
+ const [currentPage, setCurrentPage] = useState(1);
 
  useEffect(() => {
   const fetchData = async () => {
@@ -39,7 +40,7 @@ const Series = () => {
                 include_adult: 'false',
                 include_null_first_air_dates: 'false',
                 language: 'en-US',
-                page: '1',
+                page: currentPage,
                 sort_by: 'popularity.desc'
                  },
                 headers: {
@@ -55,12 +56,17 @@ const Series = () => {
                 }
             }
             fetchData();
-        }, []);
+        }, [currentPage]);
 
         const handleGenreSelection = (genreId) => {
           setSelectedGenre(genreId);
+          setCurrentPage(1);
         };
       
+        const loadMore = () => {
+          setCurrentPage((prevPage) => prevPage + 1);
+        };
+
         const filteredSeries = selectedGenre
         ? series.filter((series) =>
             series.genre_ids.includes(selectedGenre))
@@ -76,7 +82,9 @@ const Series = () => {
           onMouseLeave={() => setShowGenres(false)}
         >
           Genre
-          <span className="arrow-icon"><ArrowDropDownIcon/></span>
+          <span className="arrow-icon">
+            <ArrowDropDownIcon/>
+            </span>
           {showGenres && (
             <ul>
               {genres.map((genre) => (
@@ -92,8 +100,6 @@ const Series = () => {
       <div className="serie-list">
       {filteredSeries && filteredSeries.length > 0 ? (
           filteredSeries.map((series, index) => (
-        // {series && series.length > 0 ? (
-        //   series.map((series) => (
             <li key={series.id} className="serie-item">
               <h2>{series.title}</h2>
               {/* <p>Release Date: {series.release_date}</p> */}
@@ -110,6 +116,7 @@ const Series = () => {
           <p>No series found.</p>
         )}
       </div>
+      <button className="loadButton" onClick={loadMore} >Load More</button>
     </div>
   );
 };
