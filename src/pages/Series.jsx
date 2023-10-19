@@ -8,6 +8,8 @@ import axios from "axios";
 const Series = () => {
  const [showGenres, setShowGenres] = useState(false);
  const [genres, setGenres] = useState([]);
+ const [selectedGenre, setSelectedGenre] = useState(null);
+ const [series, setSeries] = useState([])
 
  useEffect(() => {
   const fetchData = async () => {
@@ -27,8 +29,6 @@ const Series = () => {
 
   fetchData();
 }, []); 
-
- const [series, setSeries] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,6 +57,14 @@ const Series = () => {
             fetchData();
         }, []);
 
+        const handleGenreSelection = (genreId) => {
+          setSelectedGenre(genreId);
+        };
+      
+        const filteredSeries = selectedGenre
+        ? series.filter((series) =>
+            series.genre_ids.includes(selectedGenre))
+        : series;
 
   return (
     <div className="series-container">
@@ -71,10 +79,10 @@ const Series = () => {
           <span className="arrow-icon"><ArrowDropDownIcon/></span>
           {showGenres && (
             <ul>
-               {genres.map((genre) => (
-          <option key={genre.id} value={genre.id}>
+              {genres.map((genre) => (
+          <li key={genre.id} onClick={() => handleGenreSelection(genre.id)}>
             {genre.name}
-          </option>
+          </li>
         ))}
             </ul>
           )}
@@ -82,8 +90,10 @@ const Series = () => {
       </div>
 
       <div className="serie-list">
-        {series && series.length > 0 ? (
-          series.map((series) => (
+      {filteredSeries && filteredSeries.length > 0 ? (
+          filteredSeries.map((series, index) => (
+        // {series && series.length > 0 ? (
+        //   series.map((series) => (
             <li key={series.id} className="serie-item">
               <h2>{series.title}</h2>
               {/* <p>Release Date: {series.release_date}</p> */}

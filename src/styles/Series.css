@@ -56,13 +56,14 @@
     visibility: visible;
 }
 
-.genre-drop ul li {
+.genre-drop ul option 
+{
     padding: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.genre-drop ul li:hover {
+.genre-drop ul option:hover {
     background-color: rgb(129, 30, 196);
     color: #E0E0E0;
 }
