@@ -32,7 +32,7 @@ const Search = (props) => {
         console.error("Error fetching data:", error);
       }
     };
-
+     
     if (searchTerm !== "") {
       fetchMedia();
     }
