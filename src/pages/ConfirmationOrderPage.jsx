@@ -14,6 +14,10 @@ const ConfirmationOrderPage = (props) => {
 
   const [redirectCancelled, setRedirectCancelled] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(10); // seconds
+
+
+
+  
   
 
   
@@ -49,6 +53,8 @@ const ConfirmationOrderPage = (props) => {
     return `${seconds}`;
   };
 
+ 
+
 
   
 
@@ -77,8 +83,14 @@ const ConfirmationOrderPage = (props) => {
           {cart.map((item) => (
             <tr key={item.id}>
               <td>{item.title}</td>
-              <td>1</td>
-              <td>${item.price}</td>
+              
+              <td>{item.quantity}</td>
+              <td>{item.renting ? "49" : "99"} kr</td>
+              
+              
+              
+              
+
               <img id="cart-img"src={`https://image.tmdb.org/t/p/w300${item.poster_path}`} alt="" />
             </tr>
           ))}
@@ -88,10 +100,10 @@ const ConfirmationOrderPage = (props) => {
         
 
 
-        <p>Your order number is: 123456789</p>
+      <p>Your order number is: **1234567890**</p>
         
 
-      <p>Your order total is: $100.00</p>
+      <p>Your order total is: {cart.reduce((total, item) => total + (item.renting ? 49 : 99) * item.quantity, 0)} kr</p>
 
       <div className="clock">
         <p>You will be redirected to the main page in <span className="time-remaining">{formatTimeRemaining(timeRemaining)}</span>.</p>
