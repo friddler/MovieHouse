@@ -56,8 +56,8 @@ const MovieInfo = (props) => {
               alt={movieData.title}
             />
             <div className="buttons-container">
-              <button onClick={() => props.addToCart(movieData)}>Buy</button>
-              <button>Rent</button>
+              <button onClick={() => props.addToCart(movieData,false)}>Buy</button>
+              <button onClick={() => props.addToCart(movieData,true)}>Rent</button>
             </div>
           </div>
 

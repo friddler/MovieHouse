@@ -23,6 +23,7 @@ const Checkout = () => {
 
     
 
+    
      // Redirect the user to the confirmation page
      navigate("/confirmation");
 };

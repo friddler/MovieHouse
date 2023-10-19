@@ -55,8 +55,8 @@ const SeriesInfo = (props) => {
               alt={seriesData.name}
             />
             <div className="buttons-container">
-              <button onClick={() => props.addToCart(seriesData)}>Buy</button>
-              <button>Rent</button>
+              <button onClick={() => props.addToCart(seriesData,false)}>Buy</button>
+              <button onClick={() => props.addToCart(seriesData,true)}>Rent</button>
             </div>
           </div>
 

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home"
 import Movies from "./pages/Movies"
 import Series from "./pages/Series"
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, json } from "react-router-dom";
 import ShopCart from "./components/ShopCart";
 import SeriesAPI from "./components/SeriesAPI";
 import MovieAPI from "./components/MovieAPI";
@@ -20,15 +20,32 @@ import ConfirmationOrderPage from "./pages/ConfirmationOrderPage";
 function App() {
   const [cart, setCart] = useState([]);
 
+  useEffect(()=> {
+
+    var stringCart = localStorage.getItem('cart');
+    if (stringCart) {
+
+      setCart(JSON.parse(stringCart));
+
+    }
+
+  },[]);
+
 function updateCart(){
-  setCart([...cart]);
+  let newCart = [...cart];
+  setCart(newCart);
+  localStorage.setItem('cart', JSON.stringify(newCart));
 }
 
 function removeFromCart (item) {
-  setCart(cart.filter(i => i != item));
+  let newCart = cart.filter(i => i != item);
+  setCart(newCart);
+  localStorage.setItem('cart', JSON.stringify(newCart));
 }
-function addToCart(item){
+function addToCart(item,renting){
+
   item.quantity = 1;
+  item.renting = renting;
 
   let existingMovies = cart.filter(m => item.id == m.id);
   if(existingMovies.length > 0){
@@ -36,16 +53,27 @@ function addToCart(item){
     
   }
   showSnackBar();
-  setCart([...cart,item]);
+  let newCart = [...cart,item];
+  setCart(newCart);
+  localStorage.setItem('cart', JSON.stringify(newCart));
 }
-
+function resetCart(){
+  setCart([]);
+  localStorage.setItem('cart',[]);
+}
 function cartPrice () {
 let totalPrice = 0;
 
 for (let i = 0; i < cart.length; i++) {
 
   var movie = cart[i];
-  totalPrice += 49 * movie.quantity;
+  if (movie.renting) {
+
+    totalPrice += 49 * movie.quantity;
+
+  }else{
+    totalPrice += 99 * movie.quantity;
+  }
 
 }
 
@@ -73,7 +101,7 @@ function showSnackBar() {
           <Route path="/search" element={<Search/>}/>
           <Route path="/checkout" element={<Checkout/>}/>
           <Route path="/movieinfo/:movieId" element={<MovieInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för MovieInfo */}
-          <Route path="/confirmation" element={<ConfirmationOrderPage cart={cart} />} />
+          <Route path="/confirmation" element={<ConfirmationOrderPage cart={cart} resetCart={resetCart}/>} />
           <Route path="/seriesinfo/:seriesId" element={<SeriesInfo addToCart={addToCart}/>} /> {/* Lägg till vägen för SeriesInfo */}
         </Routes>
         <Footer/>

@@ -36,6 +36,31 @@ const ShopCart = (props) => {
     navigate("/checkout");
   };
 
+  function moviePrice (movie) {
+
+    if (movie.renting) {
+
+        return 49 * movie.quantity;
+
+    }else{
+        return 99 * movie.quantity;
+    }
+    
+  }
+
+  function showRentOrBuy (movie) {
+
+    if (movie.renting) {
+      
+        return <>RENT</>;
+    }else{
+
+        return <>BUY</>;
+    }
+
+
+  }
+
   return (
     <div className="cartContainer">
       <ul className={`shopCart ${empty && "empty"}`}>
@@ -49,8 +74,8 @@ const ShopCart = (props) => {
               />
             </div>
             <div className="movieDetails">
-              <h2>{movieData.title}</h2>
-              <h4>Price: {movieData.quantity * 49 + "kr"}</h4>
+              <h2>{showRentOrBuy(movieData)} - {movieData.title}</h2>
+              <h4>Price: {moviePrice(movieData)}kr</h4>
             </div>
             <div className="actions">
               <div className="quantityControls">
@@ -84,8 +109,10 @@ const ShopCart = (props) => {
           Checkout
         </button>
       </div>
-    </div>
-  );
-};
+      </div>
+    
+
+    )
+        }
 
 export default ShopCart;
