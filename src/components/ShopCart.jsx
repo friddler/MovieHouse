@@ -74,8 +74,8 @@ const ShopCart = (props) => {
               />
             </div>
             <div className="movieDetails">
-              <h2>{movieData.title}</h2>
-              <h4>Price: {movieData.quantity * 49 + "kr"}</h4>
+              <h2>{showRentOrBuy(movieData)} - {movieData.title}</h2>
+              <h4>Price: {moviePrice(movieData)}kr</h4>
             </div>
             <div className="actions">
               <div className="quantityControls">
