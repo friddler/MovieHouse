@@ -1,80 +1,71 @@
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
+/* Base styling for the confirmation-order-page container */
 .confirmation-order-page {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height to ensure content can extend beyond the viewport */
   margin: 0;
   display: flex;
+  flex-direction: column; /* Flex direction adjusted for better vertical alignment */
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   font-family: "Poppins", sans-serif;
   text-align: center;
-  overflow: hidden;
-  background-color: #000;
-  background-image: linear-gradient(to right, #000000, #111111);
+  background: #000; /* Background shorthand */
+  background-image: linear-gradient(to right, #000, #111);
+  overflow-y: auto; /* Vertical scrolling when content overflows */
 }
 
-
+/* Styling for images */
 .confirmation-order-page img#img {
-  width: auto;
-  max-width: 50vh;
+  max-width: 100%; /* Allow the image to be responsive within its container */
   height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  
 }
 
-
+/* Styling for buttons and hover effect */
 .confirmation-order-page button {
   width: 100%;
   height: 50px;
   margin-top: 10px;
-  position: absolute;
-  bottom: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  position: relative; /* Remove 'absolute' positioning */
   font-family: "Poppins", sans-serif;
   text-align: center;
   overflow: hidden;
   
-  background-image: linear-gradient(to right, rgb(255, 255, 255)141, #ffffff);
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s; /* Smooth hover transition */
 }
 
 .confirmation-order-page button:hover {
   font-weight: bold;
-    color: rgb(0, 0, 0);
-    background-color: rgb(129, 30, 196);
+  color: #000;
+  background-color: #811EC4; /* Adjusted background color */
 }
 
-
-
-
+/* Styling for cart items with scrolling */
 .confirmation-order-page .cart-item {
   margin-bottom: 10px;
+  overflow: auto; /* Enable scrolling for cart items */
 }
 
-
+/* Styling for table cells */
 .confirmation-order-page table td {
-  color: #ccc; ;
-  border: #ccc;
+  color: #ccc;
+  
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   padding: 10px;
   margin-bottom: 10px;
   text-align: center;
   font-size: 20px;
-  
 }
 
+/* Styling for headings and paragraphs */
 .confirmation-order-page h1 {
   font-size: 30px;
   margin: 0;
@@ -83,8 +74,6 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-
-
 .confirmation-order-page p {
   font-size: 20px;
   margin: 0;
@@ -92,6 +81,7 @@
   color: #ccc;
 }
 
+/* Styling for the unordered list */
 .confirmation-order-page ul {
   display: flex;
   justify-content: center;
@@ -104,10 +94,12 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Styling for list items */
 .confirmation-order-page li {
   margin-bottom: 10px;
 }
 
+/* Styling for order total */
 .confirmation-order-page .order-total {
   font-size: 25px;
   margin: 0;
@@ -115,11 +107,10 @@
   color: #fff;
 }
 
-
-
+/* Styling for table headers */
 .confirmation-order-page th {
   color: #ccc;
-  border: #ccc;
+  
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   padding: 10px;
@@ -127,7 +118,8 @@
   text-align: center;
   font-size: 20px;
 }
-  
+
+/* Styling for the clock and time-remaining */
 .confirmation-order-page .clock {
   position: relative;
   font-size: 20px;
@@ -140,15 +132,8 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-
-
 .confirmation-order-page .clock .time-remaining {
-  font-size: large;
+  font-size: 25px;
   color: red;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  font-size: 25px;
 }
-
-  
-
-  
