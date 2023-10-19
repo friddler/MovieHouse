@@ -99,3 +99,18 @@
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
+
+
+@media screen and (max-width: 768px) {
+    .serie-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .serie-header {
+        margin-bottom: 10px;
+        margin-left: 55px;
+        grid-template-columns: 1fr 1fr;
+    }
+    
+}
