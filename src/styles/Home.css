@@ -127,3 +127,29 @@
     width: 50px;
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .video-container {
+        height: 50vh;
+    }
+
+    .welcome-container h1 {
+        font-size: 40px;
+    }
+
+    .welcome-container h2 {
+        font-size: 25px;
+    }
+
+    .welcome-container p {
+        font-size: 20px;
+    }
+
+    .trending-container h2 {
+        font-size: 25px;
+    }
+
+
+}
