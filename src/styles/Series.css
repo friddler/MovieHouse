@@ -2,6 +2,7 @@
     font-family: 'Poppins', sans-serif;
     padding: 30px;
     background-color: black;
+    min-height: 80vh;
 }
 
 .serie-header {
@@ -100,7 +101,17 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+.loadButtonDiv {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
 
+.loadButton {
+    padding: 5px;
+    margin-top: 40px;
+    
+}
 
 @media screen and (max-width: 768px) {
     .serie-list {
