@@ -27,8 +27,9 @@ function updateCart(){
 function removeFromCart (item) {
   setCart(cart.filter(i => i != item));
 }
-function addToCart(item){
+function addToCart(item,renting){
   item.quantity = 1;
+  item.renting = renting;
 
   let existingMovies = cart.filter(m => item.id == m.id);
   if(existingMovies.length > 0){
@@ -45,7 +46,13 @@ let totalPrice = 0;
 for (let i = 0; i < cart.length; i++) {
 
   var movie = cart[i];
-  totalPrice += 49 * movie.quantity;
+  if (movie.renting) {
+
+    totalPrice += 49 * movie.quantity;
+
+}else{
+    totalPrice += 99 * movie.quantity;
+}
 
 }
 

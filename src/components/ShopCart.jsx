@@ -38,9 +38,32 @@ const ShopCart = (props) => {
     navigate("/checkout");
   };
 
-    return (
+  function moviePrice (movie) {
 
+    if (movie.renting) {
+
+        return 49 * movie.quantity;
+
+    }else{
+        return 99 * movie.quantity;
+    }
+    
+  }
+
+  function showRentOrBuy (movie) {
+
+    if (movie.renting) {
       
+        return <>RENT</>;
+    }else{
+
+        return <>BUY</>;
+    }
+
+
+  }
+
+    return (
      <div>
         <ul className={`shopCart ${empty && 'empty'}`}>
             {
@@ -50,22 +73,17 @@ const ShopCart = (props) => {
         <h2>{movieData.title}</h2> 
         
         <h4>Score: {movieData.vote_average}</h4>
-        <h4>Price: {movieData.quantity*49}</h4>
+        <h4>Price: {moviePrice(movieData)}</h4>
+        <h4>{showRentOrBuy(movieData)}</h4>
         <button onClick={() => increment(movieData)} className='cartButtonPlus'>+</button><button className='cartcounter'> {movieData.quantity} </button><button onClick={() => decrement(movieData)}  className='cartButtonMin'>-</button>
         <button className='IconButton'onClick={()=> props.remove(movieData)}><DeleteIcon/></button>
-        
         <button className='globalCheckoutButton' onClick={checkout}>Checkout</button>
 
        </li>
              ))}   
-        </ul> 
-
+        </ul>
         <h3>Total price:{props.cartPrice()}</h3>
-      
-      
       </div>
-    
-
     )
     }
 
