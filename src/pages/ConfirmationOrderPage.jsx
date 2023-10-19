@@ -17,7 +17,9 @@ const ConfirmationOrderPage = (props) => {
   
 
   
-  
+  useEffect(()=>{
+    props.resetCart();
+  },[])
 
 
   useEffect(() => {
