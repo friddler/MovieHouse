@@ -137,3 +137,49 @@
   color: red;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
+
+
+
+
+/* Anpassning för mobila enheter (mindre än 768px, exempelvis smartphones) */
+@media screen and (max-width: 768px) {
+
+  .confirmation-order-page {
+    display: grid;
+    grid-template-columns: 1fr; /* En kolumn */
+    gap: 10px; /* Lägg till mellanrum mellan raderna */
+  }
+
+  .confirmation-order-page #cart-img{
+    padding-right: 40px;
+    width: 100px; /* Gör bilden full bredd på mindre skärmar */
+   }
+  .confirmation-order-page h1 {
+    font-size: 24px; /* Minska storleken på rubriken */
+  }
+
+  .confirmation-order-page p {
+    font-size: 12px; /* Minska storleken på texten */
+  }
+
+  .confirmation-order-page table td {
+    padding-left: 40px;
+    font-size: 16px; /* Minska storleken på tabellcellerna */
+  }
+
+  .confirmation-order-page table {
+    width: 100%; /* Gör tabellen full bredd på mindre skärmar */
+  }
+
+  .confirmation-order-page button {
+    height: 40px; /* Minska höjden på knappen */
+    font-size: 16px; /* Minska textstorleken på knappen */
+  }
+
+  .confirmation-order-page .clock {
+    font-size: 16px; /* Minska storleken på klockan */
+  }
+}
+
+/* Övrig styling för större skärmar (desktop) */
+/* ... Din befintliga stylingregler här ... */
