@@ -9,6 +9,8 @@ import axios from "axios";
 const Movies = () => {
   const [genres, setGenres] = useState([]);
   const [showGenres, setShowGenres] = useState(false);
+  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,8 +30,6 @@ const Movies = () => {
 
     fetchData();
   }, []); 
-
-  const [movies,setMovies] = useState([])
 
   useEffect(() => {
     const fetchData = async () => { 
@@ -58,11 +58,14 @@ const Movies = () => {
     fetchData();
   }, []);
 
-  const handleClickOption = async () => {
-    
-    console.log("clicked!", {genres});
-  }
-  
+  const handleGenreSelection = (genreId) => {
+    setSelectedGenre(genreId);
+  };
+
+  const filteredMovies = selectedGenre
+  ? movies.filter((movie) =>
+      movie.genre_ids.includes(selectedGenre))
+  : movies;
 
   return (
     <div className="movies-container">
@@ -78,9 +81,11 @@ const Movies = () => {
           {showGenres && (
             <ul>
               {genres.map((genre) => (
-          <option onClick={handleClickOption} key={genre.id} value={genre.id}>
+
+          <li key={genre.id} onClick={() => handleGenreSelection(genre.id)}>
+
             {genre.name}
-          </option>
+          </li>
         ))}
             </ul>
           )}
@@ -88,20 +93,17 @@ const Movies = () => {
       </div>
 
       <div className="movie-list">
-        {movies && movies.length > 0 ? (
-          movies.map((movie, index) => (
+        {filteredMovies && filteredMovies.length > 0 ? (
+          filteredMovies.map((movie, index) => (
             <li key={movie.id} className="movie-item">
-              {/* <h2>{movie.title}</h2> */}
-              {/* <p>Release Date: {movie.release_date}</p> */}
               <Link to={`/movieinfo/${movie.id}`}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-                style={{ maxWidth: '200px' }}
-              />
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.title}
+                  style={{ maxWidth: '200px' }}
+                />
               </Link>
             </li>
-            
           ))
         ) : (
           <p>No movies found.</p>
@@ -110,5 +112,6 @@ const Movies = () => {
     </div>
   );
 };
+
 
 export default Movies;
